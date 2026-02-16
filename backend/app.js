@@ -38,8 +38,9 @@ if (!isProduction) {
   app.use(errorhandler());
 }
 
-if (!process.env.MONGODB_URI) {
-  
+mongoose.connect("mongodb://localhost:27017/test").catch(()=>{});
+mongoose.connection.on("error", ()=>{});
+
 if (isProduction) {
 } else {
   mongoose.set("debug", true);
